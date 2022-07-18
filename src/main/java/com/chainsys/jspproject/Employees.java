@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,28 +41,11 @@ public class Employees extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		List<Employee> allEmployees = EmployeeDao.getAllEmployee();
-		Iterator<Employee> empIterator = allEmployees.iterator();
-			response.setContentType("text/html");
-			out.print("<html><head><title><Employees</title></head><body>");
-			out.print("<table border=1px bgcolor=\"DodgerBlue\" width=50%>");
-			out.print("<tr bgcolor=\"DarkSlateBlue\" align=center>");
-			out.print("<th height=\"10\" width=\"90\">Emp_id:</th>");
-			out.print("<th height=\"10\" width=\"90\">First_name:</th>");
-			out.print("<th height=\"10\" width=\"90\">Last_name:</th>");
-		while (empIterator.hasNext()) {
-			out.print("<tr align=center>");
-			Employee result = empIterator.next();
-			out.print("<td bgcolor=\"DeepSkyBlue\">" + result.getEmp_ID() + "</td>");
-			out.print("<td bgcolor=\"DeepSkyBlue\">" + result.getFirst_name() + "</td>");
-			out.print("<td bgcolor=\"DeepSkyBlue\">" + result.getLast_name() + "</td>");
-			out.print("</tr>");
-
-			out.println(result.getEmp_ID() + "," + result.getFirst_name() + "," + result.getLast_name() + ","
-					+ result.getEmail() + "," + result.getHire_date() + "," + result.getJob_id() + ","
-					+ result.getSalary() + "</p>");
-		}
+    	List<Employee> allEmployee = EmployeeDao.getAllEmployee();
+    	request.setAttribute("emplist", allEmployee);
+    	RequestDispatcher rd = request.getRequestDispatcher("/getemp.jsp");
+    	rd.forward(request, response);
+    	
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
