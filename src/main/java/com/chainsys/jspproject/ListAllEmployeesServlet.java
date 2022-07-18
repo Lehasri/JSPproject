@@ -34,7 +34,7 @@ public class ListAllEmployeesServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Employee> allEmployee = EmployeeDao.getAllEmployee();
     	request.setAttribute("emplist", allEmployee);
-    	RequestDispatcher rd = request.getRequestDispatcher("/getemp.jsp");
+    	RequestDispatcher rd = request.getRequestDispatcher("getemp.jsp");
     	rd.forward(request, response);
 	}
 
