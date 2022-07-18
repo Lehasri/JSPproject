@@ -4,19 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Delete Emp</title>
+<title>Delete Employee</title>
 </head>
 <body>
-<form action="Employees" method="post">
-		<center>
-			<div>
-				ID : <input type='text' name='id'>
-			</div>
-			<div>
-			 <input
-				type='submit' value='Delete' name='submit'>
-				</div>
-		</center>
-	</form>
+<%Integer result = (Integer)request.getAttribute("result"); %>
+<h1><%= result%> Record Deleted !!!</h1>
+
+<div id="result">result</div>
+
+<script>
+  document.getElementById("")
+</script>
 </body>
 </html>

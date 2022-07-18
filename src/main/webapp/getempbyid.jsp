@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Get Emp</title>
+<title>Get Emp By Id</title>
 </head>
 <body>
 <table> 
 <% 
-List<Employee> allEmployee = (ArrayList<Employee>)request.getAttribute("emplist");
-for(Employee emp: allEmployee){
+List<Employee> employeeById = (ArrayList<Employee>)request.getAttribute("emplist");
+for(Employee emp: employeeById){
  %>
  <tr>
   <td> <%=emp.getEmp_ID()%>  </td>
